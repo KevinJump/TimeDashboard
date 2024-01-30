@@ -1,10 +1,11 @@
 import { UmbElementMixin as pt } from "@umbraco-cms/backoffice/element-api";
 import { property as V, customElement as ut } from "@umbraco-cms/backoffice/external/lit";
-import { TIME_MANAGEMENT_CONTEXT_TOKEN as $t } from "./time.context-ZX7YU7Ay.js";
+import { TIME_MANAGEMENT_CONTEXT_TOKEN as $t } from "./time.context-2WucrG8V.js";
 import "@umbraco-cms/backoffice/class-api";
 import "@umbraco-cms/backoffice/context-api";
 import "@umbraco-cms/backoffice/observable-api";
 import "@umbraco-cms/backoffice/resources";
+import "@umbraco-cms/backoffice/auth";
 /**
  * @license
  * Copyright 2019 Google LLC
@@ -58,7 +59,7 @@ const _t = (r) => new rt(typeof r == "string" ? r : r + "", void 0, q), ft = (r,
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-const { is: At, defineProperty: gt, getOwnPropertyDescriptor: yt, getOwnPropertyNames: vt, getOwnPropertySymbols: Et, getPrototypeOf: bt } = Object, f = globalThis, J = f.trustedTypes, St = J ? J.emptyScript : "", L = f.reactiveElementPolyfillSupport, w = (r, t) => r, W = { toAttribute(r, t) {
+const { is: At, defineProperty: gt, getOwnPropertyDescriptor: yt, getOwnPropertyNames: vt, getOwnPropertySymbols: Et, getPrototypeOf: bt } = Object, f = globalThis, J = f.trustedTypes, St = J ? J.emptyScript : "", L = f.reactiveElementPolyfillSupport, C = (r, t) => r, W = { toAttribute(r, t) {
   switch (t) {
     case Boolean:
       r = r ? St : null;
@@ -118,15 +119,15 @@ class v extends HTMLElement {
     return this.elementProperties.get(t) ?? X;
   }
   static _$Ei() {
-    if (this.hasOwnProperty(w("elementProperties")))
+    if (this.hasOwnProperty(C("elementProperties")))
       return;
     const t = bt(this);
     t.finalize(), t.l !== void 0 && (this.l = [...t.l]), this.elementProperties = new Map(t.elementProperties);
   }
   static finalize() {
-    if (this.hasOwnProperty(w("finalized")))
+    if (this.hasOwnProperty(C("finalized")))
       return;
-    if (this.finalized = !0, this._$Ei(), this.hasOwnProperty(w("properties"))) {
+    if (this.finalized = !0, this._$Ei(), this.hasOwnProperty(C("properties"))) {
       const e = this.properties, s = [...vt(e), ...Et(e)];
       for (const i of s)
         this.createProperty(i, e[i]);
@@ -299,13 +300,13 @@ class v extends HTMLElement {
   firstUpdated(t) {
   }
 }
-v.elementStyles = [], v.shadowRootOptions = { mode: "open" }, v[w("elementProperties")] = /* @__PURE__ */ new Map(), v[w("finalized")] = /* @__PURE__ */ new Map(), L == null || L({ ReactiveElement: v }), (f.reactiveElementVersions ?? (f.reactiveElementVersions = [])).push("2.0.3");
+v.elementStyles = [], v.shadowRootOptions = { mode: "open" }, v[C("elementProperties")] = /* @__PURE__ */ new Map(), v[C("finalized")] = /* @__PURE__ */ new Map(), L == null || L({ ReactiveElement: v }), (f.reactiveElementVersions ?? (f.reactiveElementVersions = [])).push("2.0.3");
 /**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-const P = globalThis, R = P.trustedTypes, Z = R ? R.createPolicy("lit-html", { createHTML: (r) => r }) : void 0, nt = "$lit$", _ = `lit$${(Math.random() + "").slice(9)}$`, ht = "?" + _, Ct = `<${ht}>`, g = document, T = () => g.createComment(""), U = (r) => r === null || typeof r != "object" && typeof r != "function", at = Array.isArray, wt = (r) => at(r) || typeof (r == null ? void 0 : r[Symbol.iterator]) == "function", z = `[ 	
+const P = globalThis, R = P.trustedTypes, Z = R ? R.createPolicy("lit-html", { createHTML: (r) => r }) : void 0, nt = "$lit$", _ = `lit$${(Math.random() + "").slice(9)}$`, ht = "?" + _, wt = `<${ht}>`, g = document, T = () => g.createComment(""), U = (r) => r === null || typeof r != "object" && typeof r != "function", at = Array.isArray, Ct = (r) => at(r) || typeof (r == null ? void 0 : r[Symbol.iterator]) == "function", z = `[ 	
 \f\r]`, S = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, F = /-->/g, Q = />/g, m = RegExp(`>|${z}(?:([^\\s"'>=/]+)(${z}*=${z}*(?:[^ 	
 \f\r"'\`<>=]|("|')|))|$)`, "g"), Y = /'/g, tt = /"/g, lt = /^(?:script|style|textarea|title)$/i, Pt = (r) => (t, ...e) => ({ _$litType$: r, strings: t, values: e }), xt = Pt(1), E = Symbol.for("lit-noChange"), d = Symbol.for("lit-nothing"), et = /* @__PURE__ */ new WeakMap(), A = g.createTreeWalker(g, 129);
 function ct(r, t) {
@@ -322,7 +323,7 @@ const Tt = (r, t) => {
     for (; u < h.length && (o.lastIndex = u, p = o.exec(h), p !== null); )
       u = o.lastIndex, o === S ? p[1] === "!--" ? o = F : p[1] !== void 0 ? o = Q : p[2] !== void 0 ? (lt.test(p[2]) && (i = RegExp("</" + p[2], "g")), o = m) : p[3] !== void 0 && (o = m) : o === m ? p[0] === ">" ? (o = i ?? S, a = -1) : p[1] === void 0 ? a = -2 : (a = o.lastIndex - p[2].length, c = p[1], o = p[3] === void 0 ? m : p[3] === '"' ? tt : Y) : o === tt || o === Y ? o = m : o === F || o === Q ? o = S : (o = m, i = void 0);
     const $ = o === m && r[l + 1].startsWith("/>") ? " " : "";
-    n += o === S ? h + Ct : a >= 0 ? (s.push(c), h.slice(0, a) + nt + h.slice(a) + _ + $) : h + _ + (a === -2 ? l : $);
+    n += o === S ? h + wt : a >= 0 ? (s.push(c), h.slice(0, a) + nt + h.slice(a) + _ + $) : h + _ + (a === -2 ? l : $);
   }
   return [ct(r, n + (r[e] || "<?>") + (t === 2 ? "</svg>" : "")), s];
 };
@@ -427,7 +428,7 @@ class O {
     return this._$AB;
   }
   _$AI(t, e = this) {
-    t = b(this, t, e), U(t) ? t === d || t == null || t === "" ? (this._$AH !== d && this._$AR(), this._$AH = d) : t !== this._$AH && t !== E && this._(t) : t._$litType$ !== void 0 ? this.g(t) : t.nodeType !== void 0 ? this.$(t) : wt(t) ? this.T(t) : this._(t);
+    t = b(this, t, e), U(t) ? t === d || t == null || t === "" ? (this._$AH !== d && this._$AR(), this._$AH = d) : t !== this._$AH && t !== E && this._(t) : t._$litType$ !== void 0 ? this.g(t) : t.nodeType !== void 0 ? this.$(t) : Ct(t) ? this.T(t) : this._(t);
   }
   k(t) {
     return this._$AA.parentNode.insertBefore(t, this._$AB);
@@ -598,30 +599,28 @@ var kt = Object.defineProperty, Dt = Object.getOwnPropertyDescriptor, D = (r, t,
   if (t.has(r))
     throw TypeError("Cannot add the same private member more than once");
   t instanceof WeakSet ? t.add(r) : t.set(r, e);
-}, zt = (r, t, e, s) => (dt(r, t, "write to private field"), s ? s.call(r, e) : t.set(r, e), e), C;
+}, zt = (r, t, e, s) => (dt(r, t, "write to private field"), s ? s.call(r, e) : t.set(r, e), e), w;
 let y = class extends pt(x) {
   constructor() {
-    super(), Lt(this, C, void 0), this.title = "TimeDashboard dashboard", this.consumeContext($t, (r) => {
-      console.log("consume context"), zt(this, C, r), this.observe(r.time, (t) => {
+    super(), Lt(this, w, void 0), this.title = "TimeDashboard dashboard", this.consumeContext($t, (r) => {
+      zt(this, w, r), this.observe(r.time, (t) => {
         this.time = t;
       }), this.observe(r.date, (t) => {
         this.date = t;
       });
     });
   }
-  getTime() {
+  async getTime() {
     var r;
-    (r = st(this, C)) == null || r.getTime();
+    await ((r = st(this, w)) == null ? void 0 : r.getTime());
   }
-  getDate() {
+  async getDate() {
     var r;
-    (r = st(this, C)) == null || r.getDate();
+    await ((r = st(this, w)) == null ? void 0 : r.getDate());
   }
   render() {
     return xt`
             <uui-box headline="${this.title}">
-                dashboard content goes here
-
                 <div>
                   <uui-button @click=${this.getTime} look="primary" color="positive" label="get time"></uui-button>
                   <h2>${this.time}</h2>
@@ -635,7 +634,7 @@ let y = class extends pt(x) {
         `;
   }
 };
-C = /* @__PURE__ */ new WeakMap();
+w = /* @__PURE__ */ new WeakMap();
 y.styles = ft`
         :host {
             display: block;
@@ -654,9 +653,9 @@ D([
 y = D([
   ut("timedashboard-dashboard")
 ], y);
-const Jt = y;
+const Xt = y;
 export {
   y as TimeDashboardDashboard,
-  Jt as default
+  Xt as default
 };
-//# sourceMappingURL=dashboard.element-ijoVo2Im.js.map
+//# sourceMappingURL=dashboard.element-WhpPzXjV.js.map

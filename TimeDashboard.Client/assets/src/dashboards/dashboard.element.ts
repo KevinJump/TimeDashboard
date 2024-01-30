@@ -18,11 +18,8 @@ export class TimeDashboardDashboard extends UmbElementMixin(LitElement) {
         super();
 
         this.consumeContext(TIME_MANAGEMENT_CONTEXT_TOKEN, (_instance) => {
-
-            console.log('consume context');
-
             this.#timeContext = _instance;
-        
+       
             this.observe(_instance.time, (_time) => {
                 this.time = _time;
             });
@@ -30,27 +27,23 @@ export class TimeDashboardDashboard extends UmbElementMixin(LitElement) {
             this.observe(_instance.date, (_date) => {
                 this.date = _date;
             });
-
         })
     }
 
     @property()
     title = 'TimeDashboard dashboard'
 
-
-    getTime() {
-        this.#timeContext?.getTime();
+    async getTime() {
+        await this.#timeContext?.getTime();
     }
 
-    getDate() {
-        this.#timeContext?.getDate();
+    async getDate() {
+        await this.#timeContext?.getDate();
     }
 
     render() {
         return html`
             <uui-box headline="${this.title}">
-                dashboard content goes here
-
                 <div>
                   <uui-button @click=${this.getTime} look="primary" color="positive" label="get time"></uui-button>
                   <h2>${this.time}</h2>

@@ -2,17 +2,16 @@
 using Microsoft.AspNetCore.Mvc;
 
 using Umbraco.Cms.Api.Common.Attributes;
-using Umbraco.Cms.Api.Common.Filters;
-using Umbraco.Cms.Api.Management.Routing;
 using Umbraco.Cms.Web.Common.Authorization;
+using Umbraco.Cms.Web.Common.Routing;
 
 namespace TimeDashboard.Client.Controllers;
 
 [ApiController]
-[VersionedApiBackOfficeRoute("time")]
+[BackOfficeRoute("time/api/v{version:apiVersion}/time")]
 [Authorize(Policy = "New" + AuthorizationPolicies.BackOfficeAccess)]
 [MapToApi("time")]
-[JsonOptionsName("time")]
 public class TimeDashboardControllerBase
 {
 }
+

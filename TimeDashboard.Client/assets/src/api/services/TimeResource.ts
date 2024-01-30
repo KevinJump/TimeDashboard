@@ -12,10 +12,10 @@ export class TimeResource {
      * @returns string Success
      * @throws ApiError
      */
-    public static getUmbracoManagementApiV1TimeDate(): CancelablePromise<string> {
+    public static getUmbracoTimeApiV1TimeDate(): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'GET',
-            url: '/umbraco/management/api/v1/time/date',
+            url: '/umbraco/time/api/v1/time/date',
             errors: {
                 401: `The resource is protected and requires an authentication token`,
             },
@@ -26,10 +26,10 @@ export class TimeResource {
      * @returns string Success
      * @throws ApiError
      */
-    public static getUmbracoManagementApiV1TimeTime(): CancelablePromise<string> {
+    public static getUmbracoTimeApiV1TimeTime(): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'GET',
-            url: '/umbraco/management/api/v1/time/time',
+            url: '/umbraco/time/api/v1/time/time',
             errors: {
                 401: `The resource is protected and requires an authentication token`,
             },
