@@ -6,9 +6,9 @@ var s = (e, t, r) => ($(e, t, "read from private field"), r ? r.call(e) : t.get(
   if (t.has(e))
     throw TypeError("Cannot add the same private member more than once");
   t instanceof WeakSet ? t.add(e) : t.set(e, r);
-}, h = (e, t, r, a) => ($(e, t, "write to private field"), a ? a.call(e, r) : t.set(e, r), r);
-import { UmbBaseController as q } from "@umbraco-cms/backoffice/class-api";
-import { UmbContextToken as J } from "@umbraco-cms/backoffice/context-api";
+}, u = (e, t, r, a) => ($(e, t, "write to private field"), a ? a.call(e, r) : t.set(e, r), r);
+import { UmbBaseController as P } from "@umbraco-cms/backoffice/class-api";
+import { UmbContextToken as k } from "@umbraco-cms/backoffice/context-api";
 import { UmbStringState as B } from "@umbraco-cms/backoffice/observable-api";
 import { tryExecuteAndNotify as U } from "@umbraco-cms/backoffice/resources";
 class I extends Error {
@@ -16,7 +16,7 @@ class I extends Error {
     super(a), this.name = "ApiError", this.url = r.url, this.status = r.status, this.statusText = r.statusText, this.body = r.body, this.request = t;
   }
 }
-class L extends Error {
+class J extends Error {
   constructor(t) {
     super(t), this.name = "CancelError";
   }
@@ -25,7 +25,7 @@ class L extends Error {
   }
 }
 var y, m, l, f, g, C, T;
-class W {
+class L {
   constructor(t) {
     d(this, y, void 0);
     d(this, m, void 0);
@@ -34,24 +34,24 @@ class W {
     d(this, g, void 0);
     d(this, C, void 0);
     d(this, T, void 0);
-    h(this, y, !1), h(this, m, !1), h(this, l, !1), h(this, f, []), h(this, g, new Promise((r, a) => {
-      h(this, C, r), h(this, T, a);
+    u(this, y, !1), u(this, m, !1), u(this, l, !1), u(this, f, []), u(this, g, new Promise((r, a) => {
+      u(this, C, r), u(this, T, a);
       const n = (c) => {
-        var u;
-        s(this, y) || s(this, m) || s(this, l) || (h(this, y, !0), (u = s(this, C)) == null || u.call(this, c));
-      }, i = (c) => {
-        var u;
-        s(this, y) || s(this, m) || s(this, l) || (h(this, m, !0), (u = s(this, T)) == null || u.call(this, c));
+        var h;
+        s(this, y) || s(this, m) || s(this, l) || (u(this, y, !0), (h = s(this, C)) == null || h.call(this, c));
       }, o = (c) => {
+        var h;
+        s(this, y) || s(this, m) || s(this, l) || (u(this, m, !0), (h = s(this, T)) == null || h.call(this, c));
+      }, i = (c) => {
         s(this, y) || s(this, m) || s(this, l) || s(this, f).push(c);
       };
-      return Object.defineProperty(o, "isResolved", {
+      return Object.defineProperty(i, "isResolved", {
         get: () => s(this, y)
-      }), Object.defineProperty(o, "isRejected", {
+      }), Object.defineProperty(i, "isRejected", {
         get: () => s(this, m)
-      }), Object.defineProperty(o, "isCancelled", {
+      }), Object.defineProperty(i, "isCancelled", {
         get: () => s(this, l)
-      }), t(n, i, o);
+      }), t(n, o, i);
     }));
   }
   get [Symbol.toStringTag]() {
@@ -69,7 +69,7 @@ class W {
   cancel() {
     var t;
     if (!(s(this, y) || s(this, m) || s(this, l))) {
-      if (h(this, l, !0), s(this, f).length)
+      if (u(this, l, !0), s(this, f).length)
         try {
           for (const r of s(this, f))
             r();
@@ -77,7 +77,7 @@ class W {
           console.warn("Cancellation threw an error", r);
           return;
         }
-      s(this, f).length = 0, (t = s(this, T)) == null || t.call(this, new L("Request aborted"));
+      s(this, f).length = 0, (t = s(this, T)) == null || t.call(this, new J("Request aborted"));
     }
   }
   get isCancelled() {
@@ -95,29 +95,29 @@ const H = {
   PASSWORD: void 0,
   HEADERS: void 0,
   ENCODE_PATH: void 0
-}, N = (e) => e != null, R = (e) => typeof e == "string", O = (e) => R(e) && e !== "", j = (e) => typeof e == "object" && typeof e.type == "string" && typeof e.stream == "function" && typeof e.arrayBuffer == "function" && typeof e.constructor == "function" && typeof e.constructor.name == "string" && /^(Blob|File)$/.test(e.constructor.name) && /^(Blob|File)$/.test(e[Symbol.toStringTag]), V = (e) => e instanceof FormData, k = (e) => {
+}, N = (e) => e != null, R = (e) => typeof e == "string", O = (e) => R(e) && e !== "", j = (e) => typeof e == "object" && typeof e.type == "string" && typeof e.stream == "function" && typeof e.arrayBuffer == "function" && typeof e.constructor == "function" && typeof e.constructor.name == "string" && /^(Blob|File)$/.test(e.constructor.name) && /^(Blob|File)$/.test(e[Symbol.toStringTag]), V = (e) => e instanceof FormData, W = (e) => {
   try {
     return btoa(e);
   } catch {
     return Buffer.from(e).toString("base64");
   }
 }, v = (e) => {
-  const t = [], r = (n, i) => {
-    t.push(`${encodeURIComponent(n)}=${encodeURIComponent(String(i))}`);
-  }, a = (n, i) => {
-    N(i) && (Array.isArray(i) ? i.forEach((o) => {
-      a(n, o);
-    }) : typeof i == "object" ? Object.entries(i).forEach(([o, c]) => {
-      a(`${n}[${o}]`, c);
-    }) : r(n, i));
+  const t = [], r = (n, o) => {
+    t.push(`${encodeURIComponent(n)}=${encodeURIComponent(String(o))}`);
+  }, a = (n, o) => {
+    N(o) && (Array.isArray(o) ? o.forEach((i) => {
+      a(n, i);
+    }) : typeof o == "object" ? Object.entries(o).forEach(([i, c]) => {
+      a(`${n}[${i}]`, c);
+    }) : r(n, o));
   };
-  return Object.entries(e).forEach(([n, i]) => {
-    a(n, i);
+  return Object.entries(e).forEach(([n, o]) => {
+    a(n, o);
   }), t.length > 0 ? `?${t.join("&")}` : "";
 }, G = (e, t) => {
-  const r = e.ENCODE_PATH || encodeURI, a = t.url.replace("{api-version}", e.VERSION).replace(/{(.*?)}/g, (i, o) => {
+  const r = e.ENCODE_PATH || encodeURI, a = t.url.replace("{api-version}", e.VERSION).replace(/{(.*?)}/g, (o, i) => {
     var c;
-    return (c = t.path) != null && c.hasOwnProperty(o) ? r(String(t.path[o])) : i;
+    return (c = t.path) != null && c.hasOwnProperty(i) ? r(String(t.path[i])) : o;
   }), n = `${e.BASE}${a}`;
   return t.query ? `${n}${v(t.query)}` : n;
 }, z = (e) => {
@@ -126,35 +126,35 @@ const H = {
       R(n) || j(n) ? t.append(a, n) : t.append(a, JSON.stringify(n));
     };
     return Object.entries(e.formData).filter(([a, n]) => N(n)).forEach(([a, n]) => {
-      Array.isArray(n) ? n.forEach((i) => r(a, i)) : r(a, n);
+      Array.isArray(n) ? n.forEach((o) => r(a, o)) : r(a, n);
     }), t;
   }
 }, D = async (e, t) => typeof t == "function" ? t(e) : t, K = async (e, t) => {
-  const r = await D(t, e.TOKEN), a = await D(t, e.USERNAME), n = await D(t, e.PASSWORD), i = await D(t, e.HEADERS), o = Object.entries({
+  const r = await D(t, e.TOKEN), a = await D(t, e.USERNAME), n = await D(t, e.PASSWORD), o = await D(t, e.HEADERS), i = Object.entries({
     Accept: "application/json",
-    ...i,
+    ...o,
     ...t.headers
-  }).filter(([c, u]) => N(u)).reduce((c, [u, b]) => ({
+  }).filter(([c, h]) => N(h)).reduce((c, [h, b]) => ({
     ...c,
-    [u]: String(b)
+    [h]: String(b)
   }), {});
-  if (O(r) && (o.Authorization = `Bearer ${r}`), O(a) && O(n)) {
-    const c = k(`${a}:${n}`);
-    o.Authorization = `Basic ${c}`;
+  if (O(r) && (i.Authorization = `Bearer ${r}`), O(a) && O(n)) {
+    const c = W(`${a}:${n}`);
+    i.Authorization = `Basic ${c}`;
   }
-  return t.body && (t.mediaType ? o["Content-Type"] = t.mediaType : j(t.body) ? o["Content-Type"] = t.body.type || "application/octet-stream" : R(t.body) ? o["Content-Type"] = "text/plain" : V(t.body) || (o["Content-Type"] = "application/json")), new Headers(o);
+  return t.body && (t.mediaType ? i["Content-Type"] = t.mediaType : j(t.body) ? i["Content-Type"] = t.body.type || "application/octet-stream" : R(t.body) ? i["Content-Type"] = "text/plain" : V(t.body) || (i["Content-Type"] = "application/json")), new Headers(i);
 }, Q = (e) => {
   var t;
   if (e.body !== void 0)
     return (t = e.mediaType) != null && t.includes("/json") ? JSON.stringify(e.body) : R(e.body) || j(e.body) || V(e.body) ? e.body : JSON.stringify(e.body);
-}, X = async (e, t, r, a, n, i, o) => {
-  const c = new AbortController(), u = {
-    headers: i,
+}, X = async (e, t, r, a, n, o, i) => {
+  const c = new AbortController(), h = {
+    headers: o,
     body: a ?? n,
     method: t.method,
     signal: c.signal
   };
-  return e.WITH_CREDENTIALS && (u.credentials = e.CREDENTIALS), o(() => c.abort()), await fetch(r, u);
+  return e.WITH_CREDENTIALS && (h.credentials = e.CREDENTIALS), i(() => c.abort()), await fetch(r, h);
 }, Y = (e, t) => {
   if (t) {
     const r = e.headers.get(t);
@@ -184,7 +184,7 @@ const H = {
   if (a)
     throw new I(e, t, a);
   if (!t.ok) {
-    const n = t.status ?? "unknown", i = t.statusText ?? "unknown", o = (() => {
+    const n = t.status ?? "unknown", o = t.statusText ?? "unknown", i = (() => {
       try {
         return JSON.stringify(t.body, null, 2);
       } catch {
@@ -194,15 +194,15 @@ const H = {
     throw new I(
       e,
       t,
-      `Generic Error: status: ${n}; status text: ${i}; body: ${o}`
+      `Generic Error: status: ${n}; status text: ${o}; body: ${i}`
     );
   }
-}, M = (e, t) => new W(async (r, a, n) => {
+}, q = (e, t) => new L(async (r, a, n) => {
   try {
-    const i = G(e, t), o = z(t), c = Q(t), u = await K(e, t);
+    const o = G(e, t), i = z(t), c = Q(t), h = await K(e, t);
     if (!n.isCancelled) {
-      const b = await X(e, t, i, c, o, u, n), _ = await Z(b), F = Y(b, t.responseHeader), x = {
-        url: i,
+      const b = await X(e, t, o, c, i, h, n), _ = await Z(b), F = Y(b, t.responseHeader), x = {
+        url: o,
         ok: b.ok,
         status: b.status,
         statusText: b.statusText,
@@ -210,19 +210,22 @@ const H = {
       };
       tt(t, x), r(x.body);
     }
-  } catch (i) {
-    a(i);
+  } catch (o) {
+    a(o);
   }
 });
-class P {
+class M {
   /**
    * @returns string Success
    * @throws ApiError
    */
   static getUmbracoManagementApiV1TimeDate() {
-    return M(H, {
+    return q(H, {
       method: "GET",
-      url: "/umbraco/management/api/v1/time/date"
+      url: "/umbraco/management/api/v1/time/date",
+      errors: {
+        401: "The resource is protected and requires an authentication token"
+      }
     });
   }
   /**
@@ -230,9 +233,12 @@ class P {
    * @throws ApiError
    */
   static getUmbracoManagementApiV1TimeTime() {
-    return M(H, {
+    return q(H, {
       method: "GET",
-      url: "/umbraco/management/api/v1/time/time"
+      url: "/umbraco/management/api/v1/time/time",
+      errors: {
+        401: "The resource is protected and requires an authentication token"
+      }
     });
   }
 }
@@ -240,22 +246,22 @@ var p;
 class et {
   constructor(t) {
     d(this, p, void 0);
-    h(this, p, t);
+    u(this, p, t);
   }
   async getTime() {
-    return await U(s(this, p), P.getUmbracoManagementApiV1TimeTime());
+    return await U(s(this, p), M.getUmbracoManagementApiV1TimeTime());
   }
   async getDate() {
-    return await U(s(this, p), P.getUmbracoManagementApiV1TimeDate());
+    return await U(s(this, p), M.getUmbracoManagementApiV1TimeDate());
   }
 }
 p = new WeakMap();
 var E;
-class rt extends q {
+class rt extends P {
   constructor(r) {
     super(r);
     d(this, E, void 0);
-    h(this, E, new et(this)), console.log("repository constructor");
+    u(this, E, new et(this)), console.log("repository constructor");
   }
   async getTime() {
     return s(this, E).getTime();
@@ -266,13 +272,13 @@ class rt extends q {
 }
 E = new WeakMap();
 var S, w, A;
-class st extends q {
+class st extends P {
   constructor(r) {
     super(r);
     d(this, S, void 0);
     d(this, w, void 0);
     d(this, A, void 0);
-    h(this, w, new B("unknown")), this.time = s(this, w).asObservable(), h(this, A, new B("unknown")), this.date = s(this, A).asObservable(), this.provideContext(nt, this), h(this, S, new rt(this));
+    u(this, w, new B("unknown")), this.time = s(this, w).asObservable(), u(this, A, new B("unknown")), this.date = s(this, A).asObservable(), this.provideContext(nt, this), u(this, S, new rt(this));
   }
   async getTime() {
     const { data: r } = await s(this, S).getTime();
@@ -284,10 +290,10 @@ class st extends q {
   }
 }
 S = new WeakMap(), w = new WeakMap(), A = new WeakMap();
-const nt = new J(st.name);
+const nt = new k(st.name);
 export {
   nt as TIME_MANAGEMENT_CONTEXT_TOKEN,
   st as TimeManagementContext,
   st as default
 };
-//# sourceMappingURL=time.context-lmb6h8lc.js.map
+//# sourceMappingURL=time.context-ZX7YU7Ay.js.map

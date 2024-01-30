@@ -16,6 +16,9 @@ export class TimeResource {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/umbraco/management/api/v1/time/date',
+            errors: {
+                401: `The resource is protected and requires an authentication token`,
+            },
         });
     }
 
@@ -27,6 +30,9 @@ export class TimeResource {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/umbraco/management/api/v1/time/time',
+            errors: {
+                401: `The resource is protected and requires an authentication token`,
+            },
         });
     }
 

@@ -1,6 +1,6 @@
 import { UmbElementMixin as pt } from "@umbraco-cms/backoffice/element-api";
 import { property as V, customElement as ut } from "@umbraco-cms/backoffice/external/lit";
-import { TIME_MANAGEMENT_CONTEXT_TOKEN as $t } from "./time.context-lmb6h8lc.js";
+import { TIME_MANAGEMENT_CONTEXT_TOKEN as $t } from "./time.context-ZX7YU7Ay.js";
 import "@umbraco-cms/backoffice/class-api";
 import "@umbraco-cms/backoffice/context-api";
 import "@umbraco-cms/backoffice/observable-api";
@@ -659,4 +659,4 @@ export {
   y as TimeDashboardDashboard,
   Jt as default
 };
-//# sourceMappingURL=dashboard.element-kqEcaWvT.js.map
+//# sourceMappingURL=dashboard.element-ijoVo2Im.js.map
