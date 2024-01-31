@@ -485,3 +485,4 @@ umbraco-package-schema.json
 # Media files
 /wwwroot/media/
 /*.Client/wwwroot/*
+/TimeDashboard.Client/wwwroot/App_Plugins/timedashboard/assets.js
