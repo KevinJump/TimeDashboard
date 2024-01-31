@@ -4,7 +4,7 @@ const a = [
     name: "timedashboard",
     alias: "timedashboard.dashboard",
     elementName: "timedashboard-dashboard",
-    js: () => import("./dashboard.element-Xa_AQxv1.js"),
+    js: () => import("./dashboard.element-tIWnc2mE.js"),
     weight: -10,
     meta: {
       label: "TimeDashboard",

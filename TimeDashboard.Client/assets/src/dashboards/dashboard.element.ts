@@ -42,7 +42,6 @@ export class TimeDashboardDashboard extends UmbElementMixin(LitElement) {
      */
     connectedCallback(): void {
         super.connectedCallback();
-        console.log('connected');
 
         if (this.#timeContext != null) {
             this.#timeContext.getDateAndTime();
@@ -88,7 +87,7 @@ export class TimeDashboardDashboard extends UmbElementMixin(LitElement) {
                 </div>
 
                 <div>
-                    <uui-toggle
+                    <uui-toggle label="update"
                         .checked="${this.isPolling || false}"
                         @change=${this.toggle}>automatically update</uui-toggle>
                 </div>
