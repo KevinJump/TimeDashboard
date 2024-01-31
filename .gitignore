@@ -3,7 +3,7 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
-*.Client/wwwroot/*
+
 
 
 
@@ -484,3 +484,4 @@ umbraco-package-schema.json
 
 # Media files
 /wwwroot/media/
+/*.Client/wwwroot/*
