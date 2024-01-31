@@ -4,7 +4,7 @@ const a = [
     name: "timedashboard",
     alias: "timedashboard.dashboard",
     elementName: "timedashboard-dashboard",
-    js: () => import("./dashboard.element-WhpPzXjV.js"),
+    js: () => import("./dashboard.element-Xa_AQxv1.js"),
     weight: -10,
     meta: {
       label: "TimeDashboard",
@@ -22,7 +22,7 @@ const a = [
     type: "globalContext",
     alias: "time.context",
     name: "Time context",
-    js: () => import("./time.context-2WucrG8V.js")
+    js: () => import("./time.context-aX_xaMp2.js")
   }
 ], s = [...o], i = (n, t) => {
   t.registerMany([

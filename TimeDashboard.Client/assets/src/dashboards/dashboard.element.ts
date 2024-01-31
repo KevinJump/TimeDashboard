@@ -14,6 +14,9 @@ export class TimeDashboardDashboard extends UmbElementMixin(LitElement) {
     @property({type: String})
     date ?: string;
 
+    @property({type: Boolean})
+    isPolling : boolean = false;
+
     constructor() {
         super();
 
@@ -27,11 +30,31 @@ export class TimeDashboardDashboard extends UmbElementMixin(LitElement) {
             this.observe(_instance.date, (_date) => {
                 this.date = _date;
             });
+
+            this.observe(_instance.polling, (_polling) => {
+                this.isPolling = _polling;
+            })
         })
+    }
+
+    /**
+     * @description called when the element is first connected to the dom.
+     */
+    connectedCallback(): void {
+        super.connectedCallback();
+        console.log('connected');
+
+        if (this.#timeContext != null) {
+            this.#timeContext.getDateAndTime();
+            this.#timeContext.togglePolling();
+        }
     }
 
     @property()
     title = 'TimeDashboard dashboard'
+
+    @property()
+    description = 'Show the time the server thinks it is.'
 
     async getTime() {
         await this.#timeContext?.getTime();
@@ -41,17 +64,33 @@ export class TimeDashboardDashboard extends UmbElementMixin(LitElement) {
         await this.#timeContext?.getDate();
     }
 
+    toggle() {
+        console.log('toggle');
+        this.#timeContext?.togglePolling();
+    }
+
     render() {
         return html`
             <uui-box headline="${this.title}">
-                <div>
-                  <uui-button @click=${this.getTime} look="primary" color="positive" label="get time"></uui-button>
+                <div slot="header">${this.description}</div>
+                <div class="time-box">
                   <h2>${this.time}</h2>
+                  <uui-button 
+                    .disabled=${this.isPolling}
+                    @click=${this.getTime} look="primary" color="positive" label="get time"></uui-button>
+                </div>
+
+                <div class="time-box">
+                  <h2>${this.date}</h2>
+                  <uui-button 
+                    .disabled=${this.isPolling}
+                    @click=${this.getDate} look="primary" color="default" label="get date"></uui-button>
                 </div>
 
                 <div>
-                  <uui-button @click=${this.getDate} look="primary" color="default" label="get date"></uui-button>
-                  <h2>${this.date}</h2>
+                    <uui-toggle
+                        .checked="${this.isPolling || false}"
+                        @change=${this.toggle}>automatically update</uui-toggle>
                 </div>
             </uui-box>
         `
@@ -61,6 +100,12 @@ export class TimeDashboardDashboard extends UmbElementMixin(LitElement) {
         :host {
             display: block;
             padding: 20px;
+        }
+
+        .time-box {
+            display: flex;
+            margin-bottom: 10px;
+            justify-content: space-between;
         }
     `
 }

@@ -1,7 +1,7 @@
 ﻿import { UmbBaseController } from "@umbraco-cms/backoffice/class-api";
 import { UmbControllerHost } from "@umbraco-cms/backoffice/controller-api";
 import { UmbContextToken } from "@umbraco-cms/backoffice/context-api";
-import { UmbStringState } from "@umbraco-cms/backoffice/observable-api";
+import { UmbBooleanState, UmbStringState } from "@umbraco-cms/backoffice/observable-api";
 
 import { TimeManagementRespository } from "../repository/time.repository";
 
@@ -45,6 +45,30 @@ export class TimeManagementContext extends UmbBaseController {
         if (data) {
             this.#date.setValue(data);
         }
+    }
+
+    async getDateAndTime() {
+        this.getTime();
+        this.getDate();
+    }
+
+    #intervalId: number | null = null; 
+
+    #polling = new UmbBooleanState(false);
+    polling = this.#polling.asObservable();
+
+    togglePolling() {
+        const isEnabled = !this.#polling.getValue();
+        this.#polling.setValue(isEnabled);
+
+        if (isEnabled) {
+            this.#intervalId = setInterval(() => {
+                this.getDateAndTime();
+            }, 750) as unknown as number;
+            return;
+        }
+
+        clearInterval(this.#intervalId as number);
     }
 
 }
