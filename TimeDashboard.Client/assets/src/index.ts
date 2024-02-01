@@ -4,8 +4,8 @@ import { UmbEntryPointOnInit } from '@umbraco-cms/backoffice/extension-api';
 import { manifests as dashboardManifests } from './dashboards/manifest.ts';
 import { manifests as contextManifests }  from './context/manifest.ts';
 import { manifests as sectionManifests } from './section/manifest.ts';
-import { manifests as treeManifests} from './tree/manifest.ts';
 import { manifests as sidebarAppManifests} from './sidebar/manifest.ts';
+import { manifests as workspaceManifest} from './workspace/manifest.ts';
 
 export const onInit: UmbEntryPointOnInit = (_host, extensionRegistry) => {
     
@@ -14,7 +14,7 @@ export const onInit: UmbEntryPointOnInit = (_host, extensionRegistry) => {
         ...contextManifests,
         ...dashboardManifests,
         ...sectionManifests,
-        ...treeManifests,
-        ...sidebarAppManifests
+        ...sidebarAppManifests,
+        ...workspaceManifest,        
     ]);
 };
