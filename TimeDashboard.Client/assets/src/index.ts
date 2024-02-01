@@ -7,6 +7,8 @@ import { manifests as sectionManifests } from './section/manifest.ts';
 import { manifests as sidebarAppManifests} from './sidebar/manifest.ts';
 import { manifests as workspaceManifest} from './workspace/manifest.ts';
 
+import { manifests as documentManifests } from './documents/manifest.ts';
+
 export const onInit: UmbEntryPointOnInit = (_host, extensionRegistry) => {
     
     // register them here. 
@@ -16,5 +18,6 @@ export const onInit: UmbEntryPointOnInit = (_host, extensionRegistry) => {
         ...sectionManifests,
         ...sidebarAppManifests,
         ...workspaceManifest,        
+        ...documentManifests
     ]);
 };
