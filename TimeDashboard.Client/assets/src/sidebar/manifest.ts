@@ -1,4 +1,4 @@
-import { ManifestMenu, ManifestMenuItem, ManifestSectionSidebarApp } from "@umbraco-cms/backoffice/extension-registry";
+import { ManifestSectionSidebarApp } from "@umbraco-cms/backoffice/extension-registry";
 
 const sidebarAppManifest : ManifestSectionSidebarApp = {
     type: 'sectionSidebarApp',
@@ -15,30 +15,7 @@ const sidebarAppManifest : ManifestSectionSidebarApp = {
             alias: "Umb.Condition.SectionAlias",
             match: "time.section"
         }
-    ]   
+    ]
 };
 
-const menuManifest : ManifestMenu = {
-    type: 'menu',
-    alias: 'time.menu',
-    name: 'time sidebar menu',
-    meta: {
-        label: 'Time'
-    }
-}
-
-const menuItemManifest  : ManifestMenuItem = {
-    type: 'menuItem',
-    alias: 'time.menu,item',
-    name: 'time menu item',
-    meta: {
-        label: 'Time Zones',
-        icon: 'icon-alarm-clock',
-        entityType: 'time-workspace',
-        menus: [
-            'time.menu'
-        ]
-    }
-}
-
-export const manifests = [sidebarAppManifest, menuManifest, menuItemManifest];
+export const manifests = [sidebarAppManifest];
