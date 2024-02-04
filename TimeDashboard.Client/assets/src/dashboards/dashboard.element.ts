@@ -21,7 +21,7 @@ export class TimeDashboardDashboard extends UmbElementMixin(LitElement) {
 
         this.consumeContext(TIME_MANAGEMENT_CONTEXT_TOKEN, (_instance) => {
             this.#timeContext = _instance;
-       
+
             this.observe(_instance.time, (_time) => {
                 this.time = _time;
             });
@@ -33,7 +33,7 @@ export class TimeDashboardDashboard extends UmbElementMixin(LitElement) {
             this.observe(_instance.polling, (_polling) => {
                 this.isPolling = _polling;
             })
-        })
+        });
     }
 
     /**
@@ -49,7 +49,7 @@ export class TimeDashboardDashboard extends UmbElementMixin(LitElement) {
     }
 
     @property()
-    title = 'TimeDashboard dashboard'
+    title = '';
 
     @property()
     description = 'Show the time the server thinks it is.'
@@ -69,8 +69,10 @@ export class TimeDashboardDashboard extends UmbElementMixin(LitElement) {
 
     render() {
         return html`
-            <uui-box headline="${this.title}">
-                <div slot="header">${this.description}</div>
+            <uui-box headline="${this.localize.term('time_name')}">
+                <div slot="header">
+                    <umb-localize key="time_description"></umb-localize>
+                </div>
                 <div class="time-box">
                   <h2>${this.time}</h2>
                   <uui-button 

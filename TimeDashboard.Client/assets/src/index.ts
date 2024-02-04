@@ -7,7 +7,8 @@ import { manifests as sectionManifests } from './section/manifest.ts';
 import { manifests as sidebarAppManifests} from './sidebar/manifest.ts';
 import { manifests as workspaceManifest} from './workspace/manifest.ts';
 import { manifests as documentManifests } from './documents/manifest.ts';
-import { manifests as headerManifests} from './header/manifest.ts';
+import { manifests as headerManifests } from './header/manifest.ts';
+import { manifests as localizationManifests } from './lang/manifest.ts';
 
 export const onInit: UmbEntryPointOnInit = (_host, extensionRegistry) => {
     
@@ -19,6 +20,7 @@ export const onInit: UmbEntryPointOnInit = (_host, extensionRegistry) => {
         ...sidebarAppManifests,
         ...workspaceManifest,        
         ...documentManifests,
-        ...headerManifests
+        ...headerManifests,
+        ...localizationManifests
     ]);
 };
