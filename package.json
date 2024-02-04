@@ -1,0 +1,8 @@
+{
+    "name": "timedashboard",
+    "private": true,
+    "scripts": {
+        "watch": "cd ./TimeDashboard.Client/Assets && npm run watch"
+    }
+, "-vs-binding":{"ProjectOpened":["watch"]}
+}
