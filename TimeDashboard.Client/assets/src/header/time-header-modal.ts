@@ -1,7 +1,5 @@
 import { UmbModalBaseElement, UmbModalToken } from "@umbraco-cms/backoffice/modal";
-import { html } from "lit";
-import { customElement } from "lit/decorators.js";
-
+import { html, customElement } from "@umbraco-cms/backoffice/external/lit";
 
 @customElement('time-header-modal')
 export class TimeHeaderModalElement extends UmbModalBaseElement {

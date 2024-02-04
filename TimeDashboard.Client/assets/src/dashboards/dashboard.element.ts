@@ -1,6 +1,5 @@
-import { LitElement, html, css } from "lit";
 import { UmbElementMixin } from "@umbraco-cms/backoffice/element-api";
-import { customElement, property } from "@umbraco-cms/backoffice/external/lit";
+import { LitElement, html, css , customElement, property } from "@umbraco-cms/backoffice/external/lit";
 import TimeManagementContext, { TIME_MANAGEMENT_CONTEXT_TOKEN } from "../context/time.context";
 
 @customElement('timedashboard-dashboard')
