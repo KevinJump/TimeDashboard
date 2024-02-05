@@ -9,6 +9,8 @@ import { manifests as workspaceManifest} from './workspace/manifest.ts';
 import { manifests as documentManifests } from './documents/manifest.ts';
 import { manifests as headerManifests } from './header/manifest.ts';
 import { manifests as localizationManifests } from './lang/manifest.ts';
+import { manifests as workspaceActionManifests} from './actions/workspace/manifest.ts';
+import { manifests as entityActionManifests } from './actions/entity/manifest.ts';
 
 export const onInit: UmbEntryPointOnInit = (_host, extensionRegistry) => {
     
@@ -21,6 +23,8 @@ export const onInit: UmbEntryPointOnInit = (_host, extensionRegistry) => {
         ...workspaceManifest,        
         ...documentManifests,
         ...headerManifests,
-        ...localizationManifests
+        ...localizationManifests,
+        ...workspaceActionManifests,
+        ...entityActionManifests
     ]);
 };
