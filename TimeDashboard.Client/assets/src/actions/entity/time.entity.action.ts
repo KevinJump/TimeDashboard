@@ -7,8 +7,8 @@ export class TimeEntityAction extends UmbEntityActionBase<UmbDocumentRepository>
     #notificationContext? : UmbNotificationContext;
 
     constructor(host: UmbControllerHostElement, 
-        repositoryAlias: string, unique: string, entityType: string) {
-            super(host, repositoryAlias, unique, entityType);
+        repositoryAlias: string, unique: string) {
+            super(host, repositoryAlias, unique);
 
             this.consumeContext(UMB_NOTIFICATION_CONTEXT_TOKEN, (instance) => {
                 this.#notificationContext = instance;
