@@ -1,14 +1,12 @@
-import { UmbControllerHost } from '@umbraco-cms/backoffice/controller-api';
 import { UmbElementMixin } from '@umbraco-cms/backoffice/element-api';
 import { LitElement, html, customElement, css } from '@umbraco-cms/backoffice/external/lit';
-import { UMB_MODAL_CONTEXT_TOKEN, UMB_MODAL_MANAGER_CONTEXT_TOKEN, UmbModalManagerContext } from '@umbraco-cms/backoffice/modal';
-import { TIME_HEADER_MODAL } from './time-header-modal';
+import { UMB_MODAL_MANAGER_CONTEXT } from '@umbraco-cms/backoffice/modal';
 
 @customElement('time-header-app')
 export class TimeHeaderAppElement extends UmbElementMixin(LitElement) {
 
     #onTime() {
-        this.consumeContext(UMB_MODAL_MANAGER_CONTEXT_TOKEN, (manager) =>{
+        this.consumeContext(UMB_MODAL_MANAGER_CONTEXT, (manager) =>{
             manager.open('time.header.modal', {});
         } )
     }

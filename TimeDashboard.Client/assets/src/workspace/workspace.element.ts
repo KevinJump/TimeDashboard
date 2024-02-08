@@ -6,6 +6,12 @@ import TimeWorkspaceContext from "./context";
 export class TimeWorkspaceElement extends UmbElementMixin(LitElement) {
     #workspaceContext = new TimeWorkspaceContext(this);
 
+    constructor() {
+        super();
+
+        this.#workspaceContext._host;
+    }
+
     render() {
         return html`
         	<umb-workspace-editor headline="Time" alias="time.workspace" .enforceNoFooter=${true}>

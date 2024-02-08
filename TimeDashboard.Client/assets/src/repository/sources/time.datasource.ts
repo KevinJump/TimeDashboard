@@ -20,11 +20,11 @@ export class TimeManagementDataSource implements TimeDataSource {
     }
 
     async getTime(): Promise<DataSourceResponse<string>> {
-        return await tryExecuteAndNotify(this.#host, TimeResource.getUmbracoTimeApiV1TimeTime())
+        return await tryExecuteAndNotify(this.#host, TimeResource.getDate())
     }
 
     async getDate(): Promise<DataSourceResponse<string>> {
-        return await tryExecuteAndNotify(this.#host, TimeResource.getUmbracoTimeApiV1TimeDate())
+        return await tryExecuteAndNotify(this.#host, TimeResource.getTime())
     }
     
 }

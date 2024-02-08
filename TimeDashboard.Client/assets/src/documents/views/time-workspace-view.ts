@@ -5,7 +5,7 @@ import { UMB_WORKSPACE_CONTEXT, UmbVariantableWorkspaceContextInterface } from "
 @customElement('time-document-workspace-view')
 export class TimeDocumentWorkspaceElement extends UmbElementMixin(LitElement) {
 
-    #workspaceContext? : typeof UMB_WORKSPACE_CONTEXT.TYPE;
+    // #workspaceContext? : typeof UMB_WORKSPACE_CONTEXT.TYPE;
 
     @state()
     pageName? : string = '';

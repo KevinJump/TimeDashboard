@@ -17,5 +17,10 @@ internal class ConfigureSwaggerGenOptions : IConfigureOptions<SwaggerGenOptions>
                 Version = "Latest",
                 Description = "Time from the server"
             });
+
+        // sets the operation Ids to be the same as the action
+        // so it loses all the v1... bits to the names.
+        options.CustomOperationIds(e => $"{e.ActionDescriptor.RouteValues["action"]}");
+
     }
 }
