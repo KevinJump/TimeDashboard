@@ -26,8 +26,10 @@ export class TimeManagementContext extends UmbBaseController {
         this.#repository = new TimeManagementRespository(this);
 
         this.consumeContext(UMB_AUTH_CONTEXT, (_auth) => {
-            OpenAPI.TOKEN = ()=> _auth.getLatestToken();
-            OpenAPI.WITH_CREDENTIALS = true;
+            const umbOpenApi = _auth.getOpenApiConfiguration();
+            OpenAPI.TOKEN = umbOpenApi.token;
+            OpenAPI.BASE = umbOpenApi.base;
+            OpenAPI.WITH_CREDENTIALS = umbOpenApi.withCredentials;
         });
     }
 
