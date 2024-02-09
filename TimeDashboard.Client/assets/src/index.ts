@@ -12,6 +12,8 @@ import { manifests as localizationManifests } from './lang/manifest.ts';
 import { manifests as workspaceActionManifests} from './actions/workspace/manifest.ts';
 import { manifests as entityActionManifests } from './actions/entity/manifest.ts';
 
+import { manifests as styledTextManifests} from './editor/manifest.ts';
+
 export const onInit: UmbEntryPointOnInit = (_host, extensionRegistry) => {
     
     // register them here. 
@@ -25,6 +27,7 @@ export const onInit: UmbEntryPointOnInit = (_host, extensionRegistry) => {
         ...headerManifests,
         ...localizationManifests,
         ...workspaceActionManifests,
-        ...entityActionManifests
+        ...entityActionManifests,
+        ...styledTextManifests
     ]);
 };
