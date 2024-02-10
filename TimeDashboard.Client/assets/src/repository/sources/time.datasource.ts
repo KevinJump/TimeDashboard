@@ -20,11 +20,11 @@ export class TimeManagementDataSource implements TimeDataSource {
     }
 
     async getTime(): Promise<DataSourceResponse<string>> {
-        return await tryExecuteAndNotify(this.#host, TimeResource.getDate())
+        return await tryExecuteAndNotify(this.#host, TimeResource.getTime())
     }
 
     async getDate(): Promise<DataSourceResponse<string>> {
-        return await tryExecuteAndNotify(this.#host, TimeResource.getTime())
+        return await tryExecuteAndNotify(this.#host, TimeResource.getDate())
     }
     
 }
