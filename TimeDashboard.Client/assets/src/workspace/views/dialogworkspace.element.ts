@@ -95,15 +95,14 @@ export class TimeDialogExamplesElement extends UmbElementMixin(LitElement) {
 
         confirmContext?.onSubmit()
             .then(()=> {
-                console.log('confirm?');
+                console.log('confirm');
             })
             .catch(() => {
-                console.log('cancel?');
+                console.log('cancel');
             });
-
     }
 
-    async openModal(name : string) {
+    async openModal(name : UmbModalToken<object, unknown>) {
 
         const modalContext = this._modalContext?.open(name);
         const data = await modalContext?.onSubmit();
