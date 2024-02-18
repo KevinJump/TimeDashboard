@@ -34,7 +34,7 @@ const menuItemManifest: ManifestMenuItem = {
     meta: {
         label: 'Time zones',
         icon: 'icon-alarm-clock',
-        entityType: '',
+        entityType: 'time-workspace',
         menus: [
             'time.menu'
         ]

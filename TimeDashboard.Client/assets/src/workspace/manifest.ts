@@ -46,6 +46,24 @@ var workspaceViews : Array<ManifestWorkspaceView> = [
 				match: workspace.alias
 			},
 		],
+    },
+    {
+        type: "workspaceView",
+        alias: 'time.workspace.dialogs',
+        name: 'dialogs',
+        js: ()=> import('./views/dialogworkspace.element.js'),
+        weight: 50,
+        meta: {
+            icon: 'icon-app',
+            pathname: 'dialogs',
+            label: 'Dialogs'
+        },
+        conditions: [
+            {
+				alias: 'Umb.Condition.WorkspaceAlias',
+				match: workspace.alias
+            }
+        ]
     }
 ];
 
