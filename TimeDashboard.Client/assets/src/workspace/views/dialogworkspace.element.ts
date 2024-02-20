@@ -3,6 +3,7 @@ import { UmbElementMixin } from "@umbraco-cms/backoffice/element-api";
 import { LitElement, css, customElement, html, state } from "@umbraco-cms/backoffice/external/lit";
 import { UMB_CODE_EDITOR_MODAL, UMB_CONFIRM_MODAL, UMB_DATA_TYPE_PICKER_MODAL, UMB_DICTIONARY_ITEM_PICKER_MODAL, UMB_DOCUMENT_TYPE_PICKER_MODAL, UMB_ICON_PICKER_MODAL, UMB_MEDIA_TREE_PICKER_MODAL, UMB_MODAL_MANAGER_CONTEXT, UMB_PARTIAL_VIEW_PICKER_MODAL, UMB_TEMPLATE_PICKER_MODAL, UMB_WORKSPACE_MODAL, UmbModalManagerContext, UmbModalToken } from "@umbraco-cms/backoffice/modal";
 import { extractUmbColorVariable } from "@umbraco-cms/backoffice/resources";
+import { TIME_CUSTOM_MODAL } from "../../dialogs/custom-modal-token";
 
 @customElement("dialog-examples-view")
 export class TimeDialogExamplesElement extends UmbElementMixin(LitElement) {
@@ -21,6 +22,23 @@ export class TimeDialogExamplesElement extends UmbElementMixin(LitElement) {
 
     @state()
     color = ''; 
+
+
+    async _OpenCustomModal() {
+
+        const customContext = this._modalContext?.open(TIME_CUSTOM_MODAL, {
+            data: {
+                headline: 'A Custom modal',
+                content: 'Some content for the custom modal'
+            }
+        });
+
+        const data = await customContext?.onSubmit();
+
+        if (!data) return;
+
+        console.log('data', data);
+    }
     
     async _OpenIconPicker() {
 
@@ -68,14 +86,25 @@ export class TimeDialogExamplesElement extends UmbElementMixin(LitElement) {
                                         @click=${this._OpenIconPicker}></uui-button>
                         </div>
                     </div>
+
+                    <div>
+                        <uui-button look="secondary"
+                                    color="positive"
+                                    label="custom dialog"
+                                    @click=${this._OpenCustomModal}></uui-button>
+                    </div>
                 </uui-box>
+
+                
 
                 <uui-box>
                     ${this.render_modals()}
                 </uui-box>
 
                 <uui-box>
-                    <uui-button color="danger" look="primary"
+                    <uui-button 
+                        color="danger" 
+                        look="primary"
                         label="Confirm?" @click=${this.openConfirm}></uui-button>
                 </uui-box>
             </umb-body-layout>        
