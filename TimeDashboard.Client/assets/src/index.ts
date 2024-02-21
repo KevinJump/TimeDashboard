@@ -13,8 +13,9 @@ import { manifests as workspaceActionManifests} from './actions/workspace/manife
 import { manifests as entityActionManifests } from './actions/entity/manifest.ts';
 
 import { manifests as styledTextManifests} from './editor/manifest.ts';
-
 import { manifests as modalManifests } from './dialogs/manifests.ts';
+
+import { manifests as treeManifests } from './tree/manifests.ts';
 
 export const onInit: UmbEntryPointOnInit = (_host, extensionRegistry) => {
     
@@ -31,6 +32,7 @@ export const onInit: UmbEntryPointOnInit = (_host, extensionRegistry) => {
         ...workspaceActionManifests,
         ...entityActionManifests,
         ...styledTextManifests,
-        ...modalManifests
+        ...modalManifests,
+        ...treeManifests
     ]);
 };

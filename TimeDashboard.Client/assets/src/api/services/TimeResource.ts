@@ -2,7 +2,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { PagedEntityTreeItemResponseModel } from '../models/PagedEntityTreeItemResponseModel';
+import type { PagedTimeTreeItemResponseModel } from '../models/PagedTimeTreeItemResponseModel';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
 import { OpenAPI } from '../core/OpenAPI';
@@ -33,10 +33,10 @@ export class TimeResource {
     }
 
     /**
-     * @returns PagedEntityTreeItemResponseModel Success
+     * @returns PagedTimeTreeItemResponseModel Success
      * @throws ApiError
      */
-    public static children({
+    public static getChildren({
 parentId,
 skip,
 take = 100,
@@ -44,7 +44,7 @@ take = 100,
 parentId?: string,
 skip?: number,
 take?: number,
-}): CancelablePromise<PagedEntityTreeItemResponseModel> {
+}): CancelablePromise<PagedTimeTreeItemResponseModel> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/umbraco/time/api/v1/tree',
@@ -57,16 +57,16 @@ take?: number,
     }
 
     /**
-     * @returns PagedEntityTreeItemResponseModel Success
+     * @returns PagedTimeTreeItemResponseModel Success
      * @throws ApiError
      */
-    public static root({
+    public static getRoot({
 skip,
 take = 100,
 }: {
 skip?: number,
 take?: number,
-}): CancelablePromise<PagedEntityTreeItemResponseModel> {
+}): CancelablePromise<PagedTimeTreeItemResponseModel> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/umbraco/time/api/v1/tree/root',

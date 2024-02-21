@@ -3,7 +3,11 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type TreeItemPresentationModel = {
+import type { ReferenceByIdModel } from './ReferenceByIdModel';
+
+export type TimeTreeItemResponseModel = {
+    id: string;
+    parent?: ReferenceByIdModel | null;
     name: string;
     type: string;
     hasChildren: boolean;
