@@ -5,9 +5,9 @@ using Asp.Versioning;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
+using TimeDashboard.Client.Controllers.Tree.Models;
+
 using Umbraco.Cms.Api.Common.ViewModels.Pagination;
-using Umbraco.Cms.Api.Management.ViewModels.Tree;
-using Umbraco.Cms.Core.Services;
 using Umbraco.Extensions;
 
 namespace TimeDashboard.Client.Controllers.Tree;
@@ -16,16 +16,18 @@ namespace TimeDashboard.Client.Controllers.Tree;
 [ApiVersion("1.0")]
 public class TimeTreeRootController : TimeTreeControllerBase
 {
-    public TimeTreeRootController(IEntityService entityService) : base(entityService)
+    public TimeTreeRootController() : base()
     { }
 
     [HttpGet("root")]
     [MapToApiVersion("1.0")]
-    [ProducesResponseType(typeof(PagedViewModel<EntityTreeItemResponseModel>), StatusCodes.Status200OK)]
-    public async Task<ActionResult<PagedViewModel<EntityTreeItemResponseModel>>> Root(int skip =0, int take =100 )
+    [ProducesResponseType(typeof(PagedViewModel<TimeTreeItemResponseModel>), StatusCodes.Status200OK)]
+    public async Task<ActionResult<PagedViewModel<TimeTreeItemResponseModel>>> GetRoot(int skip =0, int take =100 )
     {
         var items = GetTreeItems();
-        return Ok(PagedViewModel(items, items.Count()));
+        var result = PagedViewModel(items, items.Count());
+
+        return base.Ok(result);
     }
 
     private static string[] _cultures = [
@@ -38,21 +40,17 @@ public class TimeTreeRootController : TimeTreeControllerBase
     ///  dummy method to get us some tree items. 
     /// </summary>
     /// <returns></returns>
-    private IEnumerable<EntityTreeItemResponseModel> GetTreeItems()
+    private IEnumerable<TimeTreeItemResponseModel> GetTreeItems()
     {
         foreach(var culture in _cultures)
         {
             var cultureInfo = CultureInfo.GetCultureInfo(culture);
 
-            yield return new EntityTreeItemResponseModel
+            yield return new TimeTreeItemResponseModel
             {
                 Id = cultureInfo.Name.ToGuid(),
                 HasChildren = false,
-                Parent = new Umbraco.Cms.Api.Management.ViewModels.ReferenceByIdModel
-                {
-                    Id = Guid.Empty
-                },
-                Type = "time-item",
+                Name = cultureInfo.Name,
             };
         }
     }

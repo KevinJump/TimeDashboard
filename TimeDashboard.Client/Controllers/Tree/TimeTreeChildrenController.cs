@@ -1,51 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Asp.Versioning;
+﻿using Asp.Versioning;
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-using MimeKit.Encodings;
+using TimeDashboard.Client.Controllers.Tree.Models;
 
 using Umbraco.Cms.Api.Common.ViewModels.Pagination;
 using Umbraco.Cms.Api.Management.ViewModels;
-using Umbraco.Cms.Api.Management.ViewModels.Tree;
-using Umbraco.Cms.Core.Services;
 
 namespace TimeDashboard.Client.Controllers.Tree;
 
 [ApiVersion("1.0")]
 public class TimeTreeChildrenController : TimeTreeControllerBase
 {
-    public TimeTreeChildrenController(IEntityService entityService) 
-        : base(entityService)
+    public TimeTreeChildrenController() : base()
     { }
 
     [HttpGet]
     [MapToApiVersion("1.0")]
-    [ProducesResponseType(typeof(PagedViewModel<EntityTreeItemResponseModel>), StatusCodes.Status200OK)]
-    public async Task<ActionResult<PagedViewModel<EntityTreeItemResponseModel>>> Children(Guid parentId, int skip = 0, int take = 100)
+    [ProducesResponseType(typeof(PagedViewModel<TimeTreeItemResponseModel>), StatusCodes.Status200OK)]
+    public async Task<ActionResult<PagedViewModel<TimeTreeItemResponseModel>>> GetChildren(Guid parentId, int skip = 0, int take = 100)
     {
-        var items = GetChildren(parentId);
+        var items = GetChildrenForParent(parentId);
+
         return Ok(PagedViewModel(items, items.Count()));
     }
 
 
-    private IEnumerable<EntityTreeItemResponseModel> GetChildren(Guid parentId)
+    private IEnumerable<TimeTreeItemResponseModel> GetChildrenForParent(Guid? parentId)
     {
-        yield return new EntityTreeItemResponseModel
+        yield return new TimeTreeItemResponseModel
         {
             Id = Guid.NewGuid(),
             HasChildren = false,
-            Type = "menu-item",
-            Parent = new ReferenceByIdModel
-            {
-                Id = parentId
-            }
+            Name = "Child item",
+            Parent = parentId.HasValue 
+                ? new ReferenceByIdModel
+                {
+                    Id = parentId.Value,
+                } 
+                : null
         };
     }
 }
