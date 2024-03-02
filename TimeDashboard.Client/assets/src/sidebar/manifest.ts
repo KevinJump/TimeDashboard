@@ -1,4 +1,6 @@
-import { ManifestMenu, ManifestMenuItem, ManifestSectionSidebarApp } from "@umbraco-cms/backoffice/extension-registry";
+import { ManifestElement } from "@umbraco-cms/backoffice/extension-api";
+import { ManifestMenu, ManifestMenuItem, ManifestSectionSidebarApp, MetaMenuItem, UmbMenuItemElement } from "@umbraco-cms/backoffice/extension-registry";
+import { addListener } from "@umbraco-cms/backoffice/router";
 
 const sidebarAppManifest : ManifestSectionSidebarApp = {
     type: 'sectionSidebarApp',
@@ -7,7 +9,7 @@ const sidebarAppManifest : ManifestSectionSidebarApp = {
     name: 'Sidebar app',
     meta: {
         label: "Time",
-        menu: "time.menu"
+        menu: "time.nested.menu"
        
     },
     conditions: [
@@ -38,11 +40,61 @@ const menuItemManifest: ManifestMenuItem = {
         menus: [
             'time.menu'
         ]
+    },
+    element: ()=> import('./nested-menu.element.js')
+}
+
+/**** nested menu items ****/
+
+export interface ManifestTimeMenuItem extends ManifestElement<UmbMenuItemElement> {
+    type: 'time-menu-item';
+    meta: MetaMenuItem;
+}
+
+
+const nestedMenuManifest : ManifestMenu = {
+    type: 'menu',
+    alias: 'time.nested.menu',
+    name: 'Nested menu',
+    element: () => import('./nested-menu.element.js'),
+    meta: {
+        label: 'Time zones',
+        icon: 'icon-alarm-clock',
+        entityType: 'time-workspace',
     }
 }
+
+const nestedMenuItems: ManifestTimeMenuItem[] = [
+    {
+        type: 'time-menu-item',
+        alias: 'time.nested.menu.child-one',
+        name: 'child item',
+        weight: 200,
+        meta: {
+            menus: [nestedMenuManifest.alias],
+            icon: 'icon-alarm-clock',
+            label: 'child item 1',
+            entityType: 'time-workspace',
+        }
+    },
+    {
+        type: 'time-menu-item',
+        alias: 'time.nested.menu.child-two',
+        name: 'child item two',
+        weight: 200,
+        meta: {
+            menus: [nestedMenuManifest.alias],
+            icon: 'icon-alarm-clock',
+            label: 'child item 2',
+            entityType: 'time-workspace',
+        }
+    }
+];
 
 export const manifests = [
     sidebarAppManifest,
     menuManifest,
-    menuItemManifest
+    menuItemManifest,
+    nestedMenuManifest,
+    ...nestedMenuItems,
 ];
