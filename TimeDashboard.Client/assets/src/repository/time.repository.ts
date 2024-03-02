@@ -1,8 +1,8 @@
-import { UmbBaseController } from "@umbraco-cms/backoffice/class-api";
+import { UmbControllerBase } from "@umbraco-cms/backoffice/class-api";
 import { UmbControllerHost } from "@umbraco-cms/backoffice/controller-api";
 import { TimeManagementDataSource } from "./sources/time.datasource";
 
-export class TimeManagementRespository extends UmbBaseController {
+export class TimeManagementRespository extends UmbControllerBase {
     #timeDataSource: TimeManagementDataSource;
 
     constructor(host: UmbControllerHost) {

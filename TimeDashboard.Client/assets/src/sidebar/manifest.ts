@@ -1,6 +1,5 @@
 import { ManifestElement } from "@umbraco-cms/backoffice/extension-api";
 import { ManifestMenu, ManifestMenuItem, ManifestSectionSidebarApp, MetaMenuItem, UmbMenuItemElement } from "@umbraco-cms/backoffice/extension-registry";
-import { addListener } from "@umbraco-cms/backoffice/router";
 
 const sidebarAppManifest : ManifestSectionSidebarApp = {
     type: 'sectionSidebarApp',

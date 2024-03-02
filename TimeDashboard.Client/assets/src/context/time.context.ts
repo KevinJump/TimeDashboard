@@ -1,4 +1,4 @@
-﻿import { UmbBaseController } from "@umbraco-cms/backoffice/class-api";
+﻿import { UmbControllerBase } from "@umbraco-cms/backoffice/class-api";
 import { UmbControllerHost } from "@umbraco-cms/backoffice/controller-api";
 import { UmbContextToken } from "@umbraco-cms/backoffice/context-api";
 import { UmbBooleanState, UmbStringState } from "@umbraco-cms/backoffice/observable-api";
@@ -9,7 +9,7 @@ import { OpenAPI } from "../api";
 
 import { UMB_AUTH_CONTEXT } from '@umbraco-cms/backoffice/auth'
 
-export class TimeManagementContext extends UmbBaseController {
+export class TimeManagementContext extends UmbControllerBase {
    
     #repository: TimeManagementRespository;
 
