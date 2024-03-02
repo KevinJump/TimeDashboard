@@ -1,10 +1,10 @@
-import { UmbBaseController } from "@umbraco-cms/backoffice/class-api";
+import { UmbControllerBase } from "@umbraco-cms/backoffice/class-api";
 import { UmbContextToken } from "@umbraco-cms/backoffice/context-api";
 import { UmbControllerHostElement } from "@umbraco-cms/backoffice/controller-api";
 import { UMB_WORKSPACE_CONTEXT, type UmbWorkspaceContextInterface } from '@umbraco-cms/backoffice/workspace';
 
 
-export class TimeWorkspaceContext extends UmbBaseController implements UmbWorkspaceContextInterface {
+export class TimeWorkspaceContext extends UmbControllerBase implements UmbWorkspaceContextInterface {
     public readonly workspaceAlias: string = 'time.workspace';
 
     constructor(host:UmbControllerHostElement) {
@@ -17,7 +17,7 @@ export class TimeWorkspaceContext extends UmbBaseController implements UmbWorksp
         return 'time-workspace';
     }
 
-    getEntityId(): string | undefined {
+    getUnique(): string | undefined {
         return undefined;
     }
 }

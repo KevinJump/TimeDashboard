@@ -1,13 +1,13 @@
 import { UmbControllerHost } from "@umbraco-cms/backoffice/controller-api";
-import { DataSourceResponse  } from "@umbraco-cms/backoffice/repository";
+import { UmbDataSourceResponse  } from "@umbraco-cms/backoffice/repository";
 import { tryExecuteAndNotify } from '@umbraco-cms/backoffice/resources';
 import { TimeResource } from "../../api";
 
 
 export interface TimeDataSource {
 
-    getTime() : Promise<DataSourceResponse<string>>;
-    getDate() : Promise<DataSourceResponse<string>>;
+    getTime() : Promise<UmbDataSourceResponse<string>>;
+    getDate() : Promise<UmbDataSourceResponse<string>>;
 
 }
 
@@ -19,11 +19,11 @@ export class TimeManagementDataSource implements TimeDataSource {
         this.#host = host;
     }
 
-    async getTime(): Promise<DataSourceResponse<string>> {
+    async getTime(): Promise<UmbDataSourceResponse<string>> {
         return await tryExecuteAndNotify(this.#host, TimeResource.getTime())
     }
 
-    async getDate(): Promise<DataSourceResponse<string>> {
+    async getDate(): Promise<UmbDataSourceResponse<string>> {
         return await tryExecuteAndNotify(this.#host, TimeResource.getDate())
     }
     

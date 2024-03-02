@@ -1,7 +1,20 @@
 import { UMB_BLOCK_CATALOGUE_MODAL } from "@umbraco-cms/backoffice/block";
 import { UmbElementMixin } from "@umbraco-cms/backoffice/element-api";
 import { LitElement, css, customElement, html, state } from "@umbraco-cms/backoffice/external/lit";
-import { UMB_CODE_EDITOR_MODAL, UMB_CONFIRM_MODAL, UMB_DATA_TYPE_PICKER_MODAL, UMB_DICTIONARY_ITEM_PICKER_MODAL, UMB_DOCUMENT_TYPE_PICKER_MODAL, UMB_ICON_PICKER_MODAL, UMB_MEDIA_TREE_PICKER_MODAL, UMB_MODAL_MANAGER_CONTEXT, UMB_PARTIAL_VIEW_PICKER_MODAL, UMB_TEMPLATE_PICKER_MODAL, UMB_WORKSPACE_MODAL, UmbModalManagerContext, UmbModalToken } from "@umbraco-cms/backoffice/modal";
+import { 
+    UMB_CODE_EDITOR_MODAL, 
+    UMB_CONFIRM_MODAL,
+    UMB_DATA_TYPE_PICKER_MODAL,
+    UMB_DICTIONARY_ITEM_PICKER_MODAL,
+    UMB_DOCUMENT_TYPE_PICKER_MODAL,
+    UMB_ICON_PICKER_MODAL,
+    UMB_MEDIA_TREE_PICKER_MODAL,
+    UMB_MODAL_MANAGER_CONTEXT, 
+    // UMB_PARTIAL_VIEW_PICKER_MODAL,
+    UMB_TEMPLATE_PICKER_MODAL,
+    UMB_WORKSPACE_MODAL,
+    UmbModalManagerContext,
+    UmbModalToken } from "@umbraco-cms/backoffice/modal";
 import { extractUmbColorVariable } from "@umbraco-cms/backoffice/resources";
 import { TIME_CUSTOM_MODAL } from "../../dialogs/custom-modal-token";
 
@@ -66,7 +79,7 @@ export class TimeDialogExamplesElement extends UmbElementMixin(LitElement) {
         {name: 'Code editor', value: UMB_CODE_EDITOR_MODAL},
         {name: 'template picker', value: UMB_TEMPLATE_PICKER_MODAL},
         {name: 'dictionary item picker', value: UMB_DICTIONARY_ITEM_PICKER_MODAL },
-        {name: 'Partial view picker', value: UMB_PARTIAL_VIEW_PICKER_MODAL},
+        // {name: 'Partial view picker', value: UMB_PARTIAL_VIEW_PICKER_MODAL},
         {name: 'Media tree picker', value: UMB_MEDIA_TREE_PICKER_MODAL}];
 
 
