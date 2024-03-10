@@ -7,7 +7,7 @@ export class TimeHeaderAppElement extends UmbElementMixin(LitElement) {
 
     #onTime() {
         this.consumeContext(UMB_MODAL_MANAGER_CONTEXT, (manager) =>{
-            manager.open('time.header.modal', {});
+            manager.open(this, 'time.header.modal', {});
         } )
     }
 

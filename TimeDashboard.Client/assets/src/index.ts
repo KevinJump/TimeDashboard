@@ -15,7 +15,6 @@ import { manifests as entityActionManifests } from './actions/entity/manifest.ts
 import { manifests as styledTextManifests} from './editor/manifest.ts';
 import { manifests as modalManifests } from './dialogs/manifests.ts';
 
-import { manifests as treeManifests } from './tree/manifests.ts';
 import { UMB_AUTH_CONTEXT } from '@umbraco-cms/backoffice/auth';
 import { OpenAPI } from './api/index.ts';
 
@@ -36,7 +35,6 @@ export const onInit: UmbEntryPointOnInit = (_host, extensionRegistry) => {
         ...entityActionManifests,
         ...styledTextManifests,
         ...modalManifests,
-        ...treeManifests
     ]);
 
     _host.consumeContext(UMB_AUTH_CONTEXT, (_auth) => {

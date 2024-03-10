@@ -4,14 +4,14 @@ import { LitElement, css, customElement, html, state } from "@umbraco-cms/backof
 import { 
     UMB_CODE_EDITOR_MODAL, 
     UMB_CONFIRM_MODAL,
-    UMB_DATA_TYPE_PICKER_MODAL,
-    UMB_DICTIONARY_ITEM_PICKER_MODAL,
-    UMB_DOCUMENT_TYPE_PICKER_MODAL,
+    // UMB_DATA_TYPE_PICKER_MODAL,
+    // UMB_DICTIONARY_ITEM_PICKER_MODAL,
+    // UMB_DOCUMENT_TYPE_PICKER_MODAL,
     UMB_ICON_PICKER_MODAL,
     UMB_MEDIA_TREE_PICKER_MODAL,
     UMB_MODAL_MANAGER_CONTEXT, 
     // UMB_PARTIAL_VIEW_PICKER_MODAL,
-    UMB_TEMPLATE_PICKER_MODAL,
+    // UMB_TEMPLATE_PICKER_MODAL,
     UMB_WORKSPACE_MODAL,
     UmbModalManagerContext,
     UmbModalToken } from "@umbraco-cms/backoffice/modal";
@@ -39,7 +39,7 @@ export class TimeDialogExamplesElement extends UmbElementMixin(LitElement) {
 
     async _OpenCustomModal() {
 
-        const customContext = this._modalContext?.open(TIME_CUSTOM_MODAL, {
+        const customContext = this._modalContext?.open(this, TIME_CUSTOM_MODAL, {
             data: {
                 headline: 'A Custom modal',
                 content: 'Some content for the custom modal'
@@ -57,7 +57,7 @@ export class TimeDialogExamplesElement extends UmbElementMixin(LitElement) {
 
         const modal = UMB_ICON_PICKER_MODAL;
 
-        const pickerContext = this._modalContext?.open(modal);
+        const pickerContext = this._modalContext?.open(this, modal);
 
         const data = await pickerContext?.onSubmit();
         if (!data) return;
@@ -72,13 +72,13 @@ export class TimeDialogExamplesElement extends UmbElementMixin(LitElement) {
 
     modal_names = [
         {name: 'Icon Picker', value: UMB_ICON_PICKER_MODAL},
-        {name: 'Data Type Picker', value: UMB_DATA_TYPE_PICKER_MODAL },
+        // {name: 'Data Type Picker', value: UMB_DATA_TYPE_PICKER_MODAL },
         {name: 'Block cataloug', value: UMB_BLOCK_CATALOGUE_MODAL }, 
         {name: 'Workspace', value: UMB_WORKSPACE_MODAL},
-        {name: 'Document Type picker', value: UMB_DOCUMENT_TYPE_PICKER_MODAL},
+        // {name: 'Document Type picker', value: UMB_DOCUMENT_TYPE_PICKER_MODAL},
         {name: 'Code editor', value: UMB_CODE_EDITOR_MODAL},
-        {name: 'template picker', value: UMB_TEMPLATE_PICKER_MODAL},
-        {name: 'dictionary item picker', value: UMB_DICTIONARY_ITEM_PICKER_MODAL },
+        // {name: 'template picker', value: UMB_TEMPLATE_PICKER_MODAL},
+        // {name: 'dictionary item picker', value: UMB_DICTIONARY_ITEM_PICKER_MODAL },
         // {name: 'Partial view picker', value: UMB_PARTIAL_VIEW_PICKER_MODAL},
         {name: 'Media tree picker', value: UMB_MEDIA_TREE_PICKER_MODAL}];
 
@@ -126,7 +126,7 @@ export class TimeDialogExamplesElement extends UmbElementMixin(LitElement) {
 
     async openConfirm() {
 
-        const confirmContext= this._modalContext?.open(UMB_CONFIRM_MODAL, {
+        const confirmContext= this._modalContext?.open(this, UMB_CONFIRM_MODAL, {
             data: {
                 headline: `Are you sure`,
                 content: 'Do you really want to do the thing here?',
@@ -146,7 +146,7 @@ export class TimeDialogExamplesElement extends UmbElementMixin(LitElement) {
 
     async openModal(name : UmbModalToken<object, unknown>) {
 
-        const modalContext = this._modalContext?.open(name);
+        const modalContext = this._modalContext?.open(this, name);
         const data = await modalContext?.onSubmit();
 
         console.log(data);

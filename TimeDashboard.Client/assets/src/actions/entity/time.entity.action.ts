@@ -1,19 +1,19 @@
 import { UmbControllerHostElement } from "@umbraco-cms/backoffice/controller-api";
-import { UMB_DOCUMENT_ENTITY_TYPE, UmbDocumentItemRepository } from "@umbraco-cms/backoffice/document";
-import { UmbEntityActionBase } from "@umbraco-cms/backoffice/entity-action";
+import { UmbDocumentItemRepository } from "@umbraco-cms/backoffice/document";
+import { UmbEntityActionArgs, UmbEntityActionBase } from "@umbraco-cms/backoffice/entity-action";
 import { UMB_NOTIFICATION_CONTEXT, UmbNotificationContext } from "@umbraco-cms/backoffice/notification";
 
 export class TimeEntityAction extends UmbEntityActionBase<UmbDocumentItemRepository> {
     #notificationContext? : UmbNotificationContext;
 
-    constructor(host: UmbControllerHostElement, 
-        repositoryAlias: string, unique: string) {
-            super(host, repositoryAlias, unique, UMB_DOCUMENT_ENTITY_TYPE)
+    constructor(host: UmbControllerHostElement, args: UmbEntityActionArgs<UmbDocumentItemRepository>)
+    {
+        super(host, args)
 
-            this.consumeContext(UMB_NOTIFICATION_CONTEXT, (instance) => {
-                this.#notificationContext = instance;
-            });
-        }
+        this.consumeContext(UMB_NOTIFICATION_CONTEXT, (instance) => {
+            this.#notificationContext = instance;
+        });
+    }
     
     async execute() {
         this.#notificationContext?.peek('warning', {

@@ -9,7 +9,7 @@ namespace TimeDashboard.Client.Controllers;
 
 [ApiController]
 [BackOfficeRoute("time/api/v{version:apiVersion}/time")]
-[Authorize(Policy = "New" + AuthorizationPolicies.BackOfficeAccess)]
+[Authorize(Policy = AuthorizationPolicies.BackOfficeAccess)]
 [MapToApi("time")]
 public class TimeDashboardControllerBase
 {
