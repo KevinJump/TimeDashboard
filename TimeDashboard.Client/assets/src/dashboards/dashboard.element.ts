@@ -55,7 +55,7 @@ export class TimeDashboardDashboard extends UmbElementMixin(LitElement) {
     description = 'Show the time the server thinks it is.'
 
     async getTime() {
-        await this.#timeContext?.getTime();
+        await this.#timeContext?.getTime();     
     }
 
     async getDate() {

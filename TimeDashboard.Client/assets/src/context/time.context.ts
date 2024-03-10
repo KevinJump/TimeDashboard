@@ -5,10 +5,6 @@ import { UmbBooleanState, UmbStringState } from "@umbraco-cms/backoffice/observa
 
 import { TimeManagementRespository } from "../repository/time.repository";
 
-import { OpenAPI } from "../api";
-
-import { UMB_AUTH_CONTEXT } from '@umbraco-cms/backoffice/auth'
-
 export class TimeManagementContext extends UmbControllerBase {
    
     #repository: TimeManagementRespository;
@@ -24,13 +20,6 @@ export class TimeManagementContext extends UmbControllerBase {
 
         this.provideContext(TIME_MANAGEMENT_CONTEXT_TOKEN, this);
         this.#repository = new TimeManagementRespository(this);
-
-        this.consumeContext(UMB_AUTH_CONTEXT, (_auth) => {
-            const umbOpenApi = _auth.getOpenApiConfiguration();
-            OpenAPI.TOKEN = umbOpenApi.token;
-            OpenAPI.BASE = umbOpenApi.base;
-            OpenAPI.WITH_CREDENTIALS = umbOpenApi.withCredentials;
-        });
     }
 
     async getTime() {
